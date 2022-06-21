@@ -13,7 +13,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function(ws) {
   
-  console.log("client joined.");
+  console.log("client joined.44");
   ws.send("client joined.");
 
   // send "hello world" interval
@@ -26,7 +26,7 @@ wss.on('connection', function(ws) {
     if (typeof(data) === "string") {
       // client sent a string
      // console.log("string received from client -> '" + data + "'");
-      ws.send("you send!" + data);
+      ws.send("you send! " + data);
     } else {
       console.log("binary received from client -> " + Array.from(data).join(", ") + "");
     }
