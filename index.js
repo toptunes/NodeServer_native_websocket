@@ -26,7 +26,6 @@ wss.on('connection', function(ws) {
     if (typeof(data) === "string") {
       // client sent a string
      // console.log("string received from client -> '" + data + "'");
-   
       ws.clients.forEach(function(client) {
         client.send(data);
       });
