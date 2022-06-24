@@ -13,8 +13,6 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function(ws) {
   
-  console.log("client joined.44");
-  ws.send("client joined.");
 
   // send "hello world" interval
   //const textInterval = setInterval(() => ws.send("hello world!"), 100);
@@ -22,6 +20,18 @@ wss.on('connection', function(ws) {
   // send random bytes interval
   //const binaryInterval = setInterval(() => ws.send(crypto.randomBytes(8).buffer), 110);
  
+  ws.on('open', function(data) {
+
+    ws.send("client joined.");
+    wss.clients.forEach(function(client) {
+      client.send("someOne joined");
+      client.send(data);
+    });
+
+  });
+
+
+
   ws.on('message', function(data) {
     if (typeof(data) === "string") {
       // client sent a string
