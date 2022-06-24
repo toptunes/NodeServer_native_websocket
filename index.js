@@ -21,7 +21,7 @@ wss.on('connection', function(ws) {
 
   // send random bytes interval
   //const binaryInterval = setInterval(() => ws.send(crypto.randomBytes(8).buffer), 110);
-
+ 
   ws.on('message', function(data) {
     if (typeof(data) === "string") {
       // client sent a string
